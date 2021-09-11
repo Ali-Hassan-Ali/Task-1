@@ -39,15 +39,15 @@
 		$(document).on('change', '.categorys', function() {
 
 			var $option      = $(this).find(":selected");
-            var count        = $option.data('count');
-            var id           = $option.val();
-            var getLocale    = "{{ app()->getLocale() }}";
+			var count        = $option.data('count');
+			var id           = $option.val();
+			var getLocale    = "{{ app()->getLocale() }}";
 
 			var nCount = count + 1;
 
 			$('.count').each(function(index) {
 
-	        	var countIng = $(this).data('count');
+				var countIng = $(this).data('count');
 
 				if (count < countIng) {
 
@@ -57,7 +57,7 @@
 
 		    });//end of product price
 
-            $.ajax({
+            		$.ajax({
         		url: 'category_id/'+id,
         		method: 'get', 
         		success: function (data) {
@@ -70,23 +70,23 @@
         				
         			} else {
 
-	        			$.each(data,function(index,value){
+					$.each(data,function(index,value){
 
-	                        if (getLocale == 'ar') {
-	                            var name = value.name.ar;
-	                        } else {
-	                            var name = value.name.en;
-	                        }
+					if (getLocale == 'ar') {
+					    var name = value.name.ar;
+					} else {
+					    var name = value.name.en;
+					}
 
-	                        $("#sub_categoryed-"+id).append('<option value="'+value.id+'" data-count="'+nCount+'" data-id="'+value.id+'">'+name+'</option>');
+	                       	 	$("#sub_categoryed-"+id).append('<option value="'+value.id+'" data-count="'+nCount+'" data-id="'+value.id+'">'+name+'</option>');
 
-	                    });//en each
+	                    		});//en each
         				
-        			}//end of if length data
+				}//end of if length data
 
         		}//end of success
 
-        	});//end of ajax
+        		});//end of ajax
 
 		});//end of categorys
 
